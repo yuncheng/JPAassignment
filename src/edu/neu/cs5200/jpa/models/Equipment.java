@@ -10,7 +10,10 @@ public class Equipment {
 	private String brand;
 	private String description;
 	private double price;
-	private int towerId;
+
+	@ManyToOne(fetch=FetchType.LAZY) 
+	@JoinColumn(name="towerId") //two tables are mapped to each other by towerId
+	private Tower tower;
 	
 	public Equipment(int id, String name, String brand, String description,
 			double price, int towerId) {
@@ -20,7 +23,6 @@ public class Equipment {
 		this.brand = brand;
 		this.description = description;
 		this.price = price;
-		this.towerId = towerId;
 	}
 	
 	
@@ -59,11 +61,12 @@ public class Equipment {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public int getTowerId() {
-		return towerId;
+
+	public Tower getTower() {
+		return tower;
 	}
-	public void setTowerId(int towerId) {
-		this.towerId = towerId;
+	public void setTower(Tower tower) {
+		this.tower = tower;
 	}
 	
 	

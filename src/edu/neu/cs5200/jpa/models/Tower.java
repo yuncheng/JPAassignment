@@ -9,7 +9,10 @@ public class Tower {
 	private String name;
 	private double height;
 	private int sides;
-	private int siteId;
+	
+	@ManyToOne(fetch=FetchType.LAZY) 
+	@JoinColumn(name="siteId") //two tables are mapped to each other by siteId
+	private Site site;
 	
 	public Tower(int id, String name, double height, int sides, int siteId) {
 		super();
@@ -17,7 +20,6 @@ public class Tower {
 		this.name = name;
 		this.height = height;
 		this.sides = sides;
-		this.siteId = siteId;
 	}
 	public Tower() {
 		super();
@@ -46,11 +48,12 @@ public class Tower {
 	public void setSides(int sides) {
 		this.sides = sides;
 	}
-	public int getSiteId() {
-		return siteId;
+
+	public Site getSite() {
+		return site;
 	}
-	public void setSiteId(int siteId) {
-		this.siteId = siteId;
+	public void setSite(Site site) {
+		this.site = site;
 	}
 	
 	

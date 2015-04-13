@@ -1,5 +1,7 @@
 package edu.neu.cs5200.jpa.models;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,8 @@ public class Site {
 	private String name;
 	private double latitude;
 	private double longitude;
+	
+	private List<Tower> towers;
 	
 	public Site(int id, String name, double latitude, double longitude) {
 		super();
@@ -53,6 +57,13 @@ public class Site {
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
-	
+
+	public List<Tower> getTowers() {
+		return towers;
+	}
+
+	public void setTowers(List<Tower> towers) {
+		this.towers = towers;
+	}
 	
 }
